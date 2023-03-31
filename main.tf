@@ -10,6 +10,7 @@ terraform {
 # Configure the AWS provider 
 provider "aws" {
     region = "us-east-1"
+    
 }
 
 # Create a VPC
@@ -84,7 +85,7 @@ resource "aws_route_table_association" "MyLab-rtba" {
 resource "aws_instance" "Jenkins" {
   ami           = var.ami
   instance_type = var.instance_type
-  key_name = "ec2"
+  key_name = "my-ec2"
   vpc_security_group_ids = [aws_security_group.MyLab-SG.id]
   subnet_id = aws_subnet.MyLab-Subnet1.id
   associate_public_ip_address = true
@@ -99,7 +100,7 @@ resource "aws_instance" "Jenkins" {
 resource "aws_instance" "Ansible-Controller" {
   ami           = var.ami
   instance_type = var.instance_type
-  key_name = "ec2"
+  key_name = "my-ec2"
   vpc_security_group_ids = [aws_security_group.MyLab-SG.id]
   subnet_id = aws_subnet.MyLab-Subnet1.id
   associate_public_ip_address = true
@@ -114,7 +115,7 @@ resource "aws_instance" "Ansible-Controller" {
 resource "aws_instance" "Nexus" {
   ami           = var.ami
   instance_type = var.instance_type_for_nexus
-  key_name = "ec2"
+  key_name = "my-ec2"
   vpc_security_group_ids = [aws_security_group.MyLab-SG.id]
   subnet_id = aws_subnet.MyLab-Subnet1.id
   associate_public_ip_address = true
@@ -129,7 +130,7 @@ resource "aws_instance" "Nexus" {
 resource "aws_instance" "DockerHost" {
   ami           = var.ami
   instance_type = var.instance_type
-  key_name = "ec2"
+  key_name = "my-ec2"
   vpc_security_group_ids = [aws_security_group.MyLab-SG.id]
   subnet_id = aws_subnet.MyLab-Subnet1.id
   associate_public_ip_address = true

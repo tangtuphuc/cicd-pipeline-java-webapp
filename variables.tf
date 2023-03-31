@@ -22,3 +22,4 @@ variable "instance_type_for_nexus" {
     type = string
     default = "t2.medium"
 }
+
